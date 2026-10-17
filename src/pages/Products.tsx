@@ -9,7 +9,16 @@ import { formatMoney, formatQty, parseAmount } from '@/lib/money'
 import type { Product } from '@/lib/types'
 import { Badge, Button, Card, EmptyState, ErrorState, Field, Input, Loading, NumberInput, PageHeader, Sheet } from '@/components/ui'
 
-const UNITS = ['litre', 'kg', 'gram', 'piece', 'packet', 'dozen']
+const UNITS = [
+  'LITRE',
+  'MILLILITRE',
+  'KILOGRAM',
+  'GRAM',
+  'PIECE',
+  'PACKET',
+  'POUCH',
+]
+
 
 export default function Products() {
   const { isOwner } = useAuth()
@@ -110,7 +119,14 @@ function ProductForm({ product, onClose }: { product: Product | 'new' | null; on
       <Field label="Low stock alert at" hint="You will see a warning when stock falls to this level or below.">
         <NumberInput value={f.threshold} onChange={(v) => setF({ ...f, threshold: v })} placeholder="0" />
       </Field>
-      <datalist id="units">{[`LITRE`, `MILLILITRE`, `KILOGRAM`, `GRAM`, `PIECE`, `PACKET`, `POUCH`].map((u) => <option key={u} value={u} />)}</datalist>
+    
+<datalist id="units">
+  {UNITS.map((unit) => (
+    <option key={unit} value={unit} />
+  ))}
+</datalist>
+
+
       <datalist id="categories">{['Milk', 'Curd', 'Paneer', 'Ghee', 'Sweets', 'Butter'].map((c) => <option key={c} value={c} />)}</datalist>
     </Sheet>
   )
