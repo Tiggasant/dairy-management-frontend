@@ -1,0 +1,49 @@
+@import "tailwindcss";
+@import "@fontsource-variable/inter";
+
+@theme {
+  --font-sans: "Inter Variable", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --color-brand-50: #f0f0ff;
+  --color-brand-100: #e4e3ff;
+  --color-brand-200: #cdcbff;
+  --color-brand-500: #6d5de8;
+  --color-brand-600: #5b4bd6;
+  --color-brand-700: #4a3cb8;
+  --color-ink: #1b1d33;
+  --color-muted: #7a7f98;
+  --color-surface: #f5f6fc;
+}
+
+html, body, #root { height: 100%; }
+body {
+  background: var(--color-surface);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-tap-highlight-color: transparent;
+  overscroll-behavior-y: none;
+}
+
+.bg-hero { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+.bg-teal-card { background: linear-gradient(135deg, #5eead4 0%, #86e3c8 100%); }
+.bg-orange-card { background: linear-gradient(135deg, #f0a56b 0%, #e58d5a 100%); }
+.bg-rose-card { background: linear-gradient(135deg, #f58aa0 0%, #e0607e 100%); }
+.bg-sky-card { background: linear-gradient(135deg, #7cc4f5 0%, #5a9fe0 100%); }
+
+.safe-bottom { padding-bottom: env(safe-area-inset-bottom); }
+.no-spinner::-webkit-outer-spin-button, .no-spinner::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+.no-spinner { -moz-appearance: textfield; appearance: textfield; }
+
+@keyframes sheet-in { from { transform: translateY(24px); opacity: 0 } to { transform: none; opacity: 1 } }
+.sheet-in { animation: sheet-in .2s ease-out; }
+
+@media print {
+  body { background: #fff; }
+  .no-print { display: none !important; }
+  .print-area { box-shadow: none !important; border: none !important; }
+}
+
+select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%237a7f98' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+}
